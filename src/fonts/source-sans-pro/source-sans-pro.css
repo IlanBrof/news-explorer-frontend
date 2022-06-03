@@ -1,0 +1,8 @@
+/* source-sans-pro-regular - latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./source-sans-pro-v21-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./source-sans-pro-v21-latin-regular.woff') format('woff') /* Modern Browsers */
+}

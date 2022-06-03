@@ -1,0 +1,83 @@
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__container {
+  height: 576px;
+  background-image: url('../../images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.main__content {
+  max-width: 608px;
+  margin: 80px auto 0 auto;
+}
+
+.main__title {
+  font-family: 'Roboto-slab', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  margin: 0 0 32px 0;
+}
+
+.main__text{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    max-width: 768px;
+    height: 400px;
+  }
+
+  .main__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  margin: 0 0 16px 0;
+  }
+
+  .main__content {
+    max-width: 448px;
+    margin: 38px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .main__container {
+    background-image: url('../../images/background_mobile.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 536px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+
+  .main {
+    max-width: 490px;
+  }
+
+  .main__content {
+    max-width: 285px;
+    margin: 30px auto 0 auto;
+  }
+  .main__title {
+    margin: 0 0 16px 0;
+  }
+}

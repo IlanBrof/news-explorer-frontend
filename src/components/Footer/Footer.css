@@ -1,0 +1,121 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+  padding: 30px 0;
+  font-family: 'Roboto';
+}
+
+.footer__copyrights {
+  margin: 0 0 0 104px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+}
+
+.footer__right-container {
+  display: flex;
+  margin: 0 106px 0 0;
+}
+
+.footer__links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.footer__social-links {
+  display: flex;
+}
+
+.footer__link-btn {
+  margin: 0 20px 0 0;
+  text-decoration: none;
+  color: #1A1B22;
+  transition: ease 0.2s all;
+}
+
+.footer__link-btn:hover {
+  opacity: 0.5;
+  transition: ease 0.2s all;
+}
+
+.footer_link-icon {
+  margin: 0 0 0 28px;
+  width: 20px;
+  height: 20px;
+  transition: ease 0.2s all;
+}
+
+.footer_link-icon:hover {
+  opacity: 0.5;
+  transition: ease 0.2s all;
+}
+.footer_link-icon:nth-child(1) {
+  background-image: url('../../images/github_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.footer_link-icon:nth-child(2) {
+  background-image: url('../../images/facebook_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 850px) {
+
+  .footer__copyrights {
+    margin: 0 0 0 40px;
+  }
+
+  .footer__right-container {
+    margin: 0 40px 0 0;
+  }
+
+  .footer_link-icon {
+    margin: 0 0 0 21px;
+   }
+
+   .footer_link-icon:nth-child(1) {
+    margin: 0 0 0 5px;
+   }
+}
+
+@media screen and (max-width: 730px) {
+
+    .footer {
+      flex-direction: column-reverse;
+      height: 176px;
+      justify-content: start;
+      width: 100%;
+      padding: 0;
+  }
+
+    .footer__links {
+      flex-direction: column;
+      line-height: 48px;
+    }
+
+    .footer__social-links {
+      margin: 15px 0 0 auto;
+    }
+
+    .footer__copyrights {
+      padding: 0 0 22px 0;
+      margin: 0 auto;
+    }
+
+    .footer__right-container {
+      margin: 0 18px 38px 18px;
+      width: 288px;
+    }
+
+}
