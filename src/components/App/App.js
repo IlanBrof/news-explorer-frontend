@@ -14,6 +14,7 @@ import {
   headerInactiveClass,
   mobileHeaderClass,
   headerLogoClass,
+  headerLogoHamburgerClass,
   headerHamburgerMenuCloseClass,
   headerHamburgerMenuClass,
   headerMenuClass,
@@ -31,6 +32,7 @@ import {
   snHeaderInactiveClass,
   snMobileHeaderClass,
   snHeaderLogoClass,
+  snHeaderLogoHamburgerClass,
   snHeaderHamburgerMenuCloseClass,
   snHeaderHamburgerMenuClass,
   snHeaderMenuClass,
@@ -48,10 +50,10 @@ function App() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = React.useState(false);
   const [isRegistrationSuccessPopupOpen, setIsRegistrationSuccessPopupOpen] = React.useState(false);
-  const [isRegistrationSuccess, setIsRegistrationSuccess] = React.useState(false);
+  const [isRegistrationSuccess, setIsRegistrationSuccess] = React.useState(true);
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = React.useState(false);
   const [isOnSavedNews, setIsOnSavedNews] = React.useState(false);
-  const [isSearchResult, setIsSearchResult] = React.useState(false);
+  const [isSearchResult, setIsSearchResult] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isNoSearchResult, setIsNoSearchResult] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -99,6 +101,7 @@ function App() {
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
     setIsSignupPopupOpen(false);
+    setIsRegistrationSuccessPopupOpen(false);
   }
 
   React.useEffect(() => {
@@ -144,6 +147,7 @@ function App() {
                 headerInactiveClass={headerInactiveClass}
                 mobileHeaderClass={mobileHeaderClass}
                 headerLogoClass={headerLogoClass}
+                headerLogoHamburgerClass={headerLogoHamburgerClass}
                 headerHamburgerMenuCloseClass={headerHamburgerMenuCloseClass}
                 headerHamburgerMenuClass={headerHamburgerMenuClass}
                 headerMenuClass={headerMenuClass}
@@ -179,6 +183,7 @@ function App() {
                 headerInactiveClass={snHeaderInactiveClass}
                 mobileHeaderClass={snMobileHeaderClass}
                 headerLogoClass={snHeaderLogoClass}
+                headerLogoHamburgerClass={snHeaderLogoHamburgerClass}
                 headerHamburgerMenuCloseClass={snHeaderHamburgerMenuCloseClass}
                 headerHamburgerMenuClass={snHeaderHamburgerMenuClass}
                 headerMenuClass={snHeaderMenuClass}

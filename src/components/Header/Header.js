@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 function Header(props) {
-
   const userName = "Ilan";
 
   const navigate = useNavigate();
@@ -25,7 +24,15 @@ function Header(props) {
       `}
     >
       <div className="header__mobile-alignment">
-        <h3 className={props.headerLogoClass}>NewsExplorer</h3>
+        <h3
+          className={
+            props.isHamburgerMenuOpen
+              ? props.headerLogoHamburgerClass
+              : props.headerLogoClass
+          }
+        >
+          NewsExplorer
+        </h3>
         <button
           className={
             props.isHamburgerMenuOpen
@@ -43,26 +50,30 @@ function Header(props) {
             : props.headerMenuClass
         }
       >
-        <button
-          className={props.headerMenuButtonClass}
-          onClick={homeRouteChange}
-        >
-          Home
-        </button>
-        <button
-          className={
-            props.isLoggedIn
-              ? props.headerMenuLoggedInClass
-              : props.headerMenuLoggedOutClass
-          }
-          onClick={savedNewsRouteChange}
-        >
-          Saved Articles
-        </button>
+        <nav className="header__links">
+          <button
+            className={props.headerMenuButtonClass}
+            onClick={homeRouteChange}
+          >
+            Home
+          </button>
+          <button
+            className={
+              props.isLoggedIn
+                ? props.headerMenuLoggedInClass
+                : props.headerMenuLoggedOutClass
+            }
+            onClick={savedNewsRouteChange}
+          >
+            Saved Articles
+          </button>
+        </nav>
         <button
           className={props.headerUserButtonClass}
           type="button"
-          onClick={!props.isLoggedIn ? props.onLoginClick : props.onLogoutButtonClick}
+          onClick={
+            !props.isLoggedIn ? props.onLoginClick : props.onLogoutButtonClick
+          }
         >
           {props.isLoggedIn ? userName : "Sign In"}
           <div

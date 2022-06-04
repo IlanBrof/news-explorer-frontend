@@ -23,6 +23,7 @@ function Main(props) {
           mobileHeaderClass={props.mobileHeaderClass}
           headerUserIcon={props.headerUserIcon}
           headerLogoClass={props.headerLogoClass}
+          headerLogoHamburgerClass={props.headerLogoHamburgerClass}
           headerHamburgerMenuCloseClass={props.headerHamburgerMenuCloseClass}
           headerHamburgerMenuClass={props.headerHamburgerMenuClass}
           headerMenuClass={props.headerMenuClass}

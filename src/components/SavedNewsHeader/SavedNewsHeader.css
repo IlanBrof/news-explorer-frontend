@@ -9,7 +9,7 @@
 
 .header__logo_sn {
   margin: 0 0 0 104px;
-  font-family: 'Roboto-slab';
+  font-family: 'Roboto-slab', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   margin: 0 104px 0 0;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -137,7 +137,7 @@
 }
 
 
-@media screen and (max-width:490px) {
+@media screen and (max-width:610px) {
   .header_sn {
     height: 56px;
     color: white;

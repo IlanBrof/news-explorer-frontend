@@ -7,7 +7,7 @@ function Footer() {
         </span>
       </div>
 
-      <div className="footer__right-container">
+      <nav className="footer__right-container">
         <div className="footer__links">
           <a className="footer__link-btn" href="#">
             Home
@@ -32,7 +32,7 @@ function Footer() {
             target="_blank"
           ></a>
         </div>
-      </div>
+      </nav>
     </footer>
   );
 }

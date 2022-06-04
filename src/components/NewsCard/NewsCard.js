@@ -76,10 +76,9 @@ function NewsCard(props) {
           </div>
           <div
             className={
-              "cards-list__login-overlay" &&
               !props.isLoggedIn &&
               isOverlayVisible
-                ? "cards-list__login-overlay_active"
+                ? "cards-list__login-overlay cards-list__login-overlay_active"
                 : "cards-list__login-overlay"
             }
           >

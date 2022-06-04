@@ -7,17 +7,18 @@
   flex-direction: column;
   font-family: 'Roboto', arial, sans-serif;
   margin: 0;
+  background-color: #F5F6F7;
 }
 
 .cards-list__title {
-  font-family: 'Roboto-slab';
+  font-family: 'Roboto-slab', Arial, sans-serif;
   color: black;
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
   margin: 80px auto 0 auto;
-  width: 1250px;
+  width: 1230px;
 }
 
 .cards-list__container {
@@ -50,19 +51,32 @@
   transition: ease 0.2s all;
 }
 
+.cards-list__login-overlay-text {
+  color: black;
+}
+
 @media screen and (max-width:1250px) {
   .cards-list__title {
-    width: 100%;
+    width: 90%;
+  }
+  .cards-list_active {
+    max-width: 1250px;
   }
 }
 
+
+
+
 @media screen and (max-width: 768px) {
+  .cards-list_active {
+    max-width: 768px;
+  }
 
   .cards-list__container {
     margin: 32px auto 32px auto;
   }
   .cards-list__title {
-    font-family: 'Roboto-slab';
+    font-family: 'Roboto-slab', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
@@ -70,20 +84,23 @@
     margin: 40px auto 0 20px;
     width: 100%;
  }
+
 }
 
-@media screen and (max-width: 740px) {
-  .cards-list_active {
-    margin: 100px 0 0 0;
-  }
-
+@media screen and (max-width: 760px) {
   .cards-list__container {
     grid-template-columns: repeat(auto-fit, 288px);
     margin: 58px auto 32px auto;
   }
+}
+
+@media screen and (max-width: 740px) {
+  .cards-list_active {
+    margin: 0;
+  }
 
   .cards-list__title {
-    font-family: 'Roboto-slab';
+    font-family: 'Roboto-slab', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;

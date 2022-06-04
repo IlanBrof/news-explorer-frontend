@@ -14,28 +14,40 @@ function SignupPopup(props) {
         <label className="popup__input-label" htmlFor="input-field">
           Email
         </label>
-        <input className="popup__input" id="input-field" type="text"></input>
-        <span className="popup__input-err">
-          Invalid email adress
-        </span>
+        <input
+          className="popup__input"
+          id="input-field"
+          type="text"
+          placeholder="Enter email"
+          required
+        ></input>
+        <span className="popup__input-err">Invalid email adress</span>
       </div>
       <div className="popup__input-alignment">
         <label className="popup__input-label" htmlFor="input-field">
           Password
         </label>
-        <input className="popup__input" id="input-field" type="text"></input>
-        <span className="popup__input-err">
-          Invalid password
-        </span>
+        <input
+          className="popup__input"
+          id="input-field"
+          type="password"
+          placeholder="Enter password"
+          required
+        ></input>
+        <span className="popup__input-err">Invalid password</span>
       </div>
       <div className="popup__input-alignment">
         <label className="popup__input-label" htmlFor="input-field">
           Username
         </label>
-        <input className="popup__input" id="input-field" type="text"></input>
-        <span className="popup__input-err">
-          Invalid User Name
-        </span>
+        <input
+          className="popup__input"
+          id="input-field"
+          type="text"
+          placeholder="Enter yout username"
+          required
+        ></input>
+        <span className="popup__input-err">Invalid User Name</span>
       </div>
     </PopupWithForm>
   );

@@ -2,6 +2,7 @@ const snHeaderClass = "header_sn";
 const snHeaderInactiveClass = "header__inactive_sn";
 const snMobileHeaderClass = "header__mobile_sn";
 const snHeaderLogoClass = "header__logo_sn";
+const snHeaderLogoHamburgerClass = "header__logo header__logo_hamburger";
 const snHeaderHamburgerMenuCloseClass = "header__hamburger-menu-close-btn_sn";
 const snHeaderHamburgerMenuClass = "header__hamburger-menu-btn_sn";
 const snHeaderMenuClass = "header__menu_sn";
@@ -18,6 +19,7 @@ export {
   snHeaderInactiveClass,
   snMobileHeaderClass,
   snHeaderLogoClass,
+  snHeaderLogoHamburgerClass,
   snHeaderHamburgerMenuCloseClass,
   snHeaderHamburgerMenuClass,
   snHeaderMenuClass,

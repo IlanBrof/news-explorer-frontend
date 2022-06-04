@@ -15,7 +15,7 @@
 
 .search-form__input {
   border: none;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -37,7 +37,7 @@
 
 .search-form__btn {
   border: none;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -58,11 +58,11 @@
   cursor: pointer;
 }
 
-/* .search-form__btn_clicked {
+.search-form__btn:active {
   background-color: #2A65CC;
   transition: ease 0.2s all;
   cursor: pointer;
-} */
+}
 
 @media screen and (max-width: 768px) {
   .search-form-container {

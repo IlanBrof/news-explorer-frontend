@@ -7,9 +7,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
+.header__links {
+  display: flex;
+}
+
 .header__logo {
   margin: 0 0 0 104px;
-  font-family: 'Roboto-slab';
+  font-family: 'Roboto-slab', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -21,7 +25,7 @@
   display: flex;
   align-items: center;
   margin: 0 104px 0 0;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -45,18 +49,6 @@
   transition: ease 0.2s all;
 }
 
-.header__button-loggedin_active {
-  border: none;
-  background: none;
-  margin: 0 0 0 44px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  height: 80px;
-  transition: ease 0.2s all;
-  display: block;
-}
-
 .header__button-loggedin {
   border: none;
   background: none;
@@ -67,6 +59,10 @@
   height: 80px;
   transition: ease 0.2s all;
   display: none;
+}
+
+.header__button-loggedin_active {
+  display: block;
 }
 
 .header__user-button {
@@ -97,6 +93,15 @@
   margin: 0 0 0 6px;
   padding: 0;
   display: block;
+}
+
+.header__logo_hamburger {
+  color: white;
+  font-family: 'Roboto-slab', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 @media screen and (max-width:834px) {
@@ -135,7 +140,7 @@
 }
 
 
-@media screen and (max-width:490px) {
+@media screen and (max-width:610px) {
   .header {
     height: 56px;
   }
@@ -154,6 +159,11 @@
   .header__inactive {
     opacity: 0;
   }
+
+  .header__links {
+    flex-direction: column;
+  }
+
 
   .header__mobile-alignment {
     width: 100%;
