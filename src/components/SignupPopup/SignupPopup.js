@@ -17,7 +17,7 @@ function SignupPopup(props) {
         <input
           className="popup__input"
           id="input-field"
-          type="text"
+          type="email"
           placeholder="Enter email"
           required
         ></input>
