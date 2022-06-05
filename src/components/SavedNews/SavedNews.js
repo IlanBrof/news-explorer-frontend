@@ -37,6 +37,7 @@ function SavedNews(props) {
         headerUserButtonClass={props.headerUserButtonClass}
         headerLogoutButtonInactiveClass={props.headerLogoutButtonInactiveClass}
         headerLogoutButtonActiveClass={props.headerLogoutButtonActiveClass}
+        onHomeButtonClick={props.onHomeButtonClick}
       />
       <div className="saved-news__content">
         <div className="saved-news__text-content">

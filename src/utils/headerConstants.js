@@ -15,7 +15,7 @@ const headerMenuLoggedInClass = "header__button-loggedin header__button-loggedin
 const headerMenuLoggedOutClass = "header__button-loggedin";
 const headerUserButtonClass = "header__user-button";
 const headerLogoutButtonInactiveClass = "header__logout-button";
-const headerLogoutButtonActiveClass = "header__logout-button_active";
+const headerLogoutButtonActiveClass = "header__logout-button header__logout-button_active";
 
 export {
   headerClass,

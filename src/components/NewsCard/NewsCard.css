@@ -5,10 +5,13 @@
   flex-direction: column;
   height: 576px;
   text-decoration: none;
-  margin: 8px 8px 8px 8px;
+  /* margin: 8px 8px 8px 8px; */
+  margin: 0;
   border-radius: 15px;
   transition: ease 0.3s all;
   box-shadow: 0 30px 58px rgba(8, 29, 45, 0);
+  cursor: pointer;
+  background-color: white;
 }
 .cards-list__card:after {
 

@@ -44,7 +44,7 @@ function SignupPopup(props) {
           className="popup__input"
           id="input-field"
           type="text"
-          placeholder="Enter yout username"
+          placeholder="Enter your username"
           required
         ></input>
         <span className="popup__input-err">Invalid User Name</span>

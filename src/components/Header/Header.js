@@ -11,6 +11,7 @@ function Header(props) {
     navigate(savedNewsPath);
   };
   const homeRouteChange = () => {
+    props.onHomeButtonClick();
     const homePath = "/";
     navigate(homePath);
   };

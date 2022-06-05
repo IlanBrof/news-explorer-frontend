@@ -8,7 +8,11 @@ import NoSearchResult from "../NoSearchResult/NoSearchResult";
 
 function Main(props) {
   return (
-    <div className="main">
+    <div
+      className={`${props.isLoginPopupOpen ? "main main_fixed" : "main"}
+      ${props.isSignupPopupOpen ? "main main_fixed" : "main"}
+      `}
+    >
       <div className="main__container">
         <Header
           isLoggedIn={props.isLoggedIn}
@@ -37,6 +41,7 @@ function Main(props) {
           }
           headerLogoutButtonActiveClass={props.headerLogoutButtonActiveClass}
           onSavedArticlesButtonClick={props.onSavedArticlesButtonClick}
+          onHomeButtonClick={props.onHomeButtonClick}
         />
         <div
           className={
@@ -53,7 +58,6 @@ function Main(props) {
           </p>
         </div>
         <SearchForm />
-
       </div>
       <NewsCardList
         isLoggedIn={props.isLoggedIn}

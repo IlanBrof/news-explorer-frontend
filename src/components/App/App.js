@@ -96,6 +96,12 @@ function App() {
 
   function handleSavedArticlesClick() {
     setIsOnSavedNews(true);
+    setIsHamburgerMenuOpen(false);
+  }
+
+  function handleHomeArticlesClick() {
+    setIsOnSavedNews(false);
+    setIsHamburgerMenuOpen(false);
   }
 
   function closeAllPopups() {
@@ -164,6 +170,7 @@ function App() {
                 isLoading={isLoading}
                 isNoSearchResult={isNoSearchResult}
                 onSavedArticlesButtonClick={handleSavedArticlesClick}
+                onHomeButtonClick={handleHomeArticlesClick}
               />
             }
           ></Route>
@@ -197,6 +204,7 @@ function App() {
                 }
                 headerLogoutButtonActiveClass={snHeaderLogoutButtonActiveClass}
                 isOnSavedNews={isOnSavedNews}
+                onHomeButtonClick={handleHomeArticlesClick}
               />
             }
           ></Route>
