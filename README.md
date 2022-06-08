@@ -13,4 +13,4 @@ Please enjoy and feel free to contact me.
 readme:
 * Github Repository (frontend): https://github.com/IlanBrof/news-explorer-frontend
 * Github Repository (backend): https://github.com/IlanBrof/news-explorer-backend
-* Link to deployment: demonewsapp.students.nomoreparties.sbs
+* Link to deployment: https://demonewsapp.students.nomoreparties.sbs
