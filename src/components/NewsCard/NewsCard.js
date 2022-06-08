@@ -1,9 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import MainApi from "../../utils/MainApi";
 
 function NewsCard(props) {
   const [isHovered, setIsHovered] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [isDelButtonClicked, setIsDelButtonClicked] = useState(false);
+  const [isArticleSaved, setIsArticleSaved] = useState(false);
+  const [upperCaseKeyword, setUpperCaseKeyword] = useState("");
+  const location = useLocation();
+  const isOnSavedNews = location.pathname === "/saved-news";
+  const isOnMain = location.pathname === "/";
+
+  useEffect(() => {
+    if (isOnMain) {
+      props.savedArticles.forEach((item) => {
+        if (
+          item.title === props.article.title &&
+          item.link === props.article.url &&
+          item.date === props.article.date &&
+          !isButtonClicked
+        ) {
+          setIsButtonClicked(true);
+        }
+      });
+    }
+  }, []);
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const date = new Date(props.article.date);
+  const convertedDate =
+    months[date.getMonth()] +
+    " " +
+    [date.getDate()] +
+    ", " +
+    [date.getFullYear()];
+
+  useEffect(() => {
+    if (isOnSavedNews) {
+      const keywordUpperCase =
+        props.article.keyword.charAt(0).toUpperCase() +
+        props.article.keyword.slice(1);
+      setUpperCaseKeyword(keywordUpperCase);
+    }
+  }, [props.savedArticles]);
 
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -15,46 +69,66 @@ function NewsCard(props) {
     setIsOverlayVisible(false);
   };
 
-  const handleButtonClick = () => {
-    if (!isButtonClicked) {
-      setIsButtonClicked(true);
-    } else {
+  async function handleButtonClick() {
+    try {
+      await props.handleSaveArticle(props.article);
       setIsButtonClicked(false);
+    } catch (err) {
+      setIsButtonClicked(false);
+      console.log(err); //eslint-disable
     }
+  }
+
+  const handleDeleteClick = () => {
+    props.savedArticles.forEach((article) => {
+      if (article._id === props.article._id) {
+        setIsDelButtonClicked(true);
+        return props.onDeleteBtnClick(props.article._id);
+      }
+    });
   };
 
   return (
-    <li className="cards-list__card">
+    <li
+      className={
+        isDelButtonClicked
+          ? "cards-list__card cards-list__card_del"
+          : "cards-list__card"
+      }
+    >
       <div className="cards-list__card-image-container">
         <div className="cards-list__button-container">
           <button
-            className={`${
-              props.isLoggedIn
-                ? "cards-list__save-btn_active"
-                : "cards-list__save-btn"
-            } ${
-              props.isLoggedIn && isButtonClicked
+            className={` ${
+              isButtonClicked && props.isLoggedIn
                 ? "cards-list__save-btn_marked"
                 : "cards-list__save-btn"
             }
               ${
-                props.isLoggedIn && props.isOnSavedNews
+                props.isLoggedIn && isOnSavedNews
                   ? "cards-list__delete-btn"
                   : "cards-list__save-btn"
               }
               ${
-                props.isLoggedIn && props.isOnSavedNews && isHovered
+                props.isLoggedIn && isOnSavedNews && isHovered
                   ? "cards-list__delete-btn cards-list__delete-btn_active"
+                  : "cards-list__save-btn"
+              }
+              ${
+                props.isLoggedIn
+                  ? "cards-list__save-btn_active"
                   : "cards-list__save-btn"
               }
                 `}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
-            onClick={handleButtonClick}
+            onClick={isOnSavedNews ? handleDeleteClick : handleButtonClick}
+            // onClick={handleButtonClick}
           ></button>
+
           <div
             className={`${
-              props.isLoggedIn && props.isOnSavedNews && isHovered
+              props.isLoggedIn && isOnSavedNews && isHovered
                 ? "cards-list__login-overlay_active cards-list__login-overlay_loggedin"
                 : "cards-list__login-overlay"
             }`}
@@ -65,19 +139,18 @@ function NewsCard(props) {
           </div>
           <div
             className={`${
-              props.isLoggedIn && props.isOnSavedNews
+              props.isLoggedIn && isOnSavedNews
                 ? "cards-list__login-overlay_active cards-list__login-overlay_keyword"
                 : "cards-list__login-overlay"
             }`}
           >
             <span className="cards-list__login-overlay-text">
-              {props.keyword}
+              {upperCaseKeyword}
             </span>
           </div>
           <div
             className={
-              !props.isLoggedIn &&
-              isOverlayVisible
+              !props.isLoggedIn && isOverlayVisible
                 ? "cards-list__login-overlay cards-list__login-overlay_active"
                 : "cards-list__login-overlay"
             }
@@ -87,17 +160,24 @@ function NewsCard(props) {
             </span>
           </div>
         </div>
-        <img
-          src={props.articleImage}
-          className="cards-list__card-image"
-          alt="art"
-        ></img>
+        <a
+          className="cards-list__article-link"
+          href={isOnSavedNews ? props.article.link : props.article.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={props.article.image}
+            className="cards-list__card-image"
+            alt="art"
+          ></img>
+        </a>
       </div>
       <div className="cards-list__card-content">
-        <span className="cards-list__card-date">{props.articleDate}</span>
-        <h3 className="cards-list__card-title">{props.articleTitle}</h3>
-        <p className="cards-list__card-text">{props.articleText}</p>
-        <span className="cards-list__card-source">{props.articleSource}</span>
+        <span className="cards-list__card-date">{convertedDate}</span>
+        <h3 className="cards-list__card-title">{props.article.title}</h3>
+        <p className="cards-list__card-text">{props.article.text}</p>
+        <span className="cards-list__card-source">{props.article.source}</span>
       </div>
     </li>
   );

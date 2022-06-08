@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 function Header(props) {
-  const userName = "Ilan";
-
   const navigate = useNavigate();
 
   const savedNewsRouteChange = () => {
@@ -76,7 +74,7 @@ function Header(props) {
             !props.isLoggedIn ? props.onLoginClick : props.onLogoutButtonClick
           }
         >
-          {props.isLoggedIn ? userName : "Sign In"}
+          {props.isLoggedIn ? props.user.name : "Sign In"}
           <div
             className={
               props.isLoggedIn

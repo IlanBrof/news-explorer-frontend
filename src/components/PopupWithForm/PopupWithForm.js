@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 function PopupWithForm(props) {
   return (
     <div className={`popup ${props.isOpen && "popup_open"}`}>
-
       <div
         className={`popup__container ${
           props.isOpen ? "popup__container_slide" : "popup__container"
@@ -9,7 +10,7 @@ function PopupWithForm(props) {
       >
         <button className="popup__close-btn" onClick={props.onClose}></button>
         <div className="popup__form-container">
-          <form className="popup__form">
+          <form className="popup__form" onSubmit={props.handleSubmit}>
             <h2 className="popup__title">{props.title}</h2>
             {props.children}
             <button
@@ -18,6 +19,7 @@ function PopupWithForm(props) {
                   ? "popup__submit-btn_inactive"
                   : "popup__submit-btn"
               }
+              type="submit"
             >
               {props.buttonText}
             </button>

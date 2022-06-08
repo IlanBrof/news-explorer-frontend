@@ -28,6 +28,7 @@ function SavedNewsHeader(props) {
       headerLogoutButtonInactiveClass={props.headerLogoutButtonInactiveClass}
       headerLogoutButtonActiveClass={props.headerLogoutButtonActiveClass}
       onHomeButtonClick={props.onHomeButtonClick}
+      user={props.user}
     />
   );
 }

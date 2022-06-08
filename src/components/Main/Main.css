@@ -8,7 +8,7 @@
 }
 
 .main {
-  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 0;
   font-family: 'Roboto', Arial, sans-serif;
@@ -19,7 +19,7 @@
 
 .main_fixed {
   position: fixed;
-  width: 100%;
+  max-width: 1440px;
 }
 
 .main__container {

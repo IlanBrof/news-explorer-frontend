@@ -1,16 +1,45 @@
+import { useState, useEffect } from "react";
+
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import Footer from "../Footer/Footer";
 import NewsCard from "../NewsCard/NewsCard";
 
-//////images//////
-import corgiPic from "../../images/corgi.png";
-import moosePic from "../../images/moose.png";
-import lakePic from "../../images/lake.png";
-import starsPic from "../../images/stars.png";
-import parkPic from "../../images/park.png";
-//////images//////
-
 function SavedNews(props) {
+  const [articlesToRender, setArticlesToRender] = useState(3);
+  const [keywords, setKeywords] = useState("");
+
+  useEffect(() => {
+    setArticlesToRender(localStorage.getItem("counter"));
+  }, [props.savedArticles]);
+
+  useEffect(() => {
+    const count = {};
+    props.savedArticles.forEach((article) => {
+      count[article.keyword] = (count[article.keyword] || 0) + 1;
+
+      let articleKeys = Object.keys(count).map((article) => {
+        return [article, count[article]];
+      });
+      articleKeys.sort((a, b) => b[1] - a[1]);
+      articleKeys = articleKeys.flat().filter((key) => typeof key === "string");
+
+      if (articleKeys.length <= 3) {
+        articleKeys = articleKeys.join(", ");
+        setKeywords(articleKeys);
+      } else {
+        const keyCount = articleKeys.length;
+        articleKeys = [
+          articleKeys[0].charAt(0).toUpperCase() + articleKeys[0].slice(1),
+          articleKeys[1].charAt(0).toUpperCase() + articleKeys[1].slice(1),
+        ];
+        articleKeys = articleKeys.join(", ");
+        const renderedKeys = `${articleKeys}, and ${keyCount - 2} other`;
+
+        setKeywords(renderedKeys);
+      }
+    });
+  }, [props.savedArticles]);
+
   return (
     <section className="saved-news">
       <SavedNewsHeader
@@ -38,78 +67,33 @@ function SavedNews(props) {
         headerLogoutButtonInactiveClass={props.headerLogoutButtonInactiveClass}
         headerLogoutButtonActiveClass={props.headerLogoutButtonActiveClass}
         onHomeButtonClick={props.onHomeButtonClick}
+        user={props.user}
       />
       <div className="saved-news__content">
         <div className="saved-news__text-content">
           <p className="saved-news__subtitle">Saved articles</p>
           <h2 className="saved-news__title">
-            Elise, you have 5 saved articles
+            {`${props.user.name}, you have ${props.savedArticles.length} saved
+            articles`}
           </h2>
           <p className="saved-news__keywords">
             By Keywords:{" "}
-            <span className="saved-news__keywords-bold">
-              Nature, Yellowstone, and 2 other.
-            </span>
+            <span className="saved-news__keywords-bold">{keywords}</span>
           </p>
         </div>
         <ul className="cards-list__container cards-list__container_sn">
-          <NewsCard
-            articleImage={corgiPic}
-            articleDate={"November 4, 2020"}
-            articleTitle={`Everyone Needs a Special 'Sit Spot' in Nature`}
-            articleText={`Ever since I read Richard Louv's influential book, "Last Child in the
-          Woods," the idea of having a special "sit spot" has stuck with me.
-          This advice, which Louv attributes to nature educator Jon Young, is
-          for both adults and children to find...`}
-            articleSource={"treehugger"}
-            isLoggedIn={props.isLoggedIn}
-            isOnSavedNews={props.isOnSavedNews}
-            keyword={"Nature"}
-          />
-          <NewsCard
-            articleImage={lakePic}
-            articleDate={"February 19, 2019"}
-            articleTitle={`Nature makes you better`}
-            articleText={`We all know how good nature can make us feel. We have known it for
-          millennia: the sound of the ocean, the scents of a forest, the way
-          dappled sunlight dances through leaves.`}
-            articleSource={"national geographic"}
-            isLoggedIn={props.isLoggedIn}
-            isOnSavedNews={props.isOnSavedNews}
-            keyword={"Nature"}
-          />
-          <NewsCard
-            articleImage={parkPic}
-            articleDate={"October 19, 2020"}
-            articleTitle={`Nostalgic Photos of Tourists in U.S. National Parks`}
-            articleText={`Uri Løvevild Golman and Helle Løvevild Golman are National Geographic Explorers and conservation photographers who just completed a project and book they call their love letter to...`}
-            articleSource={"national geographic"}
-            isLoggedIn={props.isLoggedIn}
-            isOnSavedNews={props.isOnSavedNews}
-            keyword={"Yellowstone"}
-          />
-          <NewsCard
-            articleImage={moosePic}
-            articleDate={"November 4, 2020"}
-            articleTitle={`Grand Teton Renews Historic Crest Trail`}
-            articleText={`“The linking together of the Cascade and Death Canyon trails, at
-          their heads, took place on October 1, 1933, and marked the first
-          step in the realization of a plan whereby the hiker will be...`}
-            articleSource={"national parks traveler"}
-            isLoggedIn={props.isLoggedIn}
-            isOnSavedNews={props.isOnSavedNews}
-            keyword={"Parks"}
-          />
-          <NewsCard
-            articleImage={starsPic}
-            articleDate={"March 16, 2020"}
-            articleTitle={`Scientists Don't Know Why Polaris Is So Weird `}
-            articleText={`“Humans have long relied on the starry sky to push into new frontiers, sail to the very edge of the world and find their way back home again. Even animals look to the stars to guide them. `}
-            articleSource={"treehugger"}
-            isLoggedIn={props.isLoggedIn}
-            isOnSavedNews={props.isOnSavedNews}
-            keyword={"Photography"}
-          />
+          {props.savedArticles.map((article) => {
+            return (
+              <NewsCard
+                key={"articleId_" + Math.round(Math.random() * 555555)}
+                article={article}
+                isLoggedIn={props.isLoggedIn}
+                isOnSavedNews={props.isOnSavedNews}
+                onDeleteBtnClick={props.onDeleteBtnClick}
+                savedArticles={props.savedArticles}
+              />
+            );
+          })}
         </ul>
       </div>
       <Footer />

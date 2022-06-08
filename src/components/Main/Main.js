@@ -42,6 +42,7 @@ function Main(props) {
           headerLogoutButtonActiveClass={props.headerLogoutButtonActiveClass}
           onSavedArticlesButtonClick={props.onSavedArticlesButtonClick}
           onHomeButtonClick={props.onHomeButtonClick}
+          user={props.user}
         />
         <div
           className={
@@ -57,15 +58,20 @@ function Main(props) {
             account.
           </p>
         </div>
-        <SearchForm />
+        <SearchForm onSearchClick={props.onSearchClick} />
       </div>
+      <Preloader isLoading={props.isLoading} />
+      <NoSearchResult isNoSearchResult={props.isNoSearchResult} />
       <NewsCardList
         isLoggedIn={props.isLoggedIn}
         isSearchResult={props.isSearchResult}
+        searchResults={props.searchResults}
+        handleSaveArticle={props.handleSaveArticle}
+        onDeleteBtnClick={props.onDeleteBtnClick}
+        articles={props.articles}
+        savedArticles={props.savedArticles}
       />
 
-      <Preloader isLoading={props.isLoading} />
-      <NoSearchResult isNoSearchResult={props.isNoSearchResult} />
       <About />
       <Footer />
     </div>

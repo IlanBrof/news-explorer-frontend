@@ -9,7 +9,7 @@ function Footer() {
 
       <nav className="footer__right-container">
         <div className="footer__links">
-          <a className="footer__link-btn" href="#">
+          <a className="footer__link-btn" href="/">
             Home
           </a>
           <a
@@ -23,12 +23,12 @@ function Footer() {
         <div className="footer__social-links">
           <a
             className="footer_link-icon"
-            href="https://github.com/IlanBrof/"
+            href="https://github.com/Yandex-Practicum"
             target="_blank"
           ></a>
           <a
             className="footer_link-icon"
-            href="https://www.facebook.com/Ilan.Brofman/"
+            href="https://www.facebook.com/Practicum100IL"
             target="_blank"
           ></a>
         </div>
