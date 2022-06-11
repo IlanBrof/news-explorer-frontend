@@ -71,7 +71,14 @@ function App() {
   const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [isRegisterError, setIsRegisterError] = React.useState(false);
-
+  const [isUsernameError, setIsUsernameError] = React.useState(false);
+  const [isUsernameErrorText, setIsUsernameErrorText] = React.useState("");
+  const [isPasswordError, setIsPasswordError] = React.useState(false);
+  const [isPasswordErrorText, setIsPasswordErrorText] = React.useState("");
+  const [isEmailError, setIsEmailError] = React.useState(false);
+  const [isEmailErrorText, setIsEmailErrorText] = React.useState("");
+  const regEmail =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const navigate = useNavigate();
 
   function handleLoginPopupClick() {
@@ -130,12 +137,39 @@ function App() {
 
   function handleEmailField(evt) {
     setEmail(evt.target.value);
+    if (!evt.target.value) {
+      setIsEmailError(true);
+      setIsEmailErrorText("Email is required.");
+    } else if (!regEmail.test(evt.target.value)) {
+      setIsEmailError(true);
+      setIsEmailErrorText("Email is invalid.");
+    } else {
+      setIsEmailError(false);
+    }
   }
   function handlePasswordField(evt) {
     setPassword(evt.target.value);
+    if (!evt.target.value) {
+      setIsPasswordError(true);
+      setIsPasswordErrorText("Password is required.");
+    } else if (evt.target.value.length <= 2) {
+      setIsPasswordError(true);
+      setIsPasswordErrorText("The Password is too short.");
+    } else {
+      setIsPasswordError(false);
+    }
   }
   function handleUsernameField(evt) {
     setUsername(evt.target.value);
+    if (!evt.target.value) {
+      setIsUsernameError(true);
+      setIsUsernameErrorText('Username is required.')
+    } else if (evt.target.value.length <= 2) {
+      setIsUsernameError(true);
+      setIsUsernameErrorText('Username is too short.')
+    } else {
+      setIsUsernameError(false);
+    }
   }
 
   React.useEffect(() => {
@@ -219,7 +253,6 @@ function App() {
           setIsLoggedIn(true);
           setIsLoginPopupOpen(false);
         }
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err); //eslint-disable
@@ -332,6 +365,7 @@ function App() {
                 onDeleteBtnClick={handleDeleteArticle}
                 savedArticles={savedArticles}
                 articles={articles}
+                setLoginPopupOpen={setIsLoginPopupOpen}
               />
             }
           ></Route>
@@ -384,7 +418,11 @@ function App() {
           password={password}
           username={username}
           setEmail={handleEmailField}
+          isEmailError={isEmailError}
+          isEmailErrorText={isEmailErrorText}
           setPassword={handlePasswordField}
+          isPasswordError={isPasswordError}
+          isPasswordErrorText={isPasswordErrorText}
           setUsername={handleUsernameField}
           handleLogin={handleLogin}
         />
@@ -397,8 +435,14 @@ function App() {
           password={password}
           username={username}
           setEmail={handleEmailField}
+          isEmailError={isEmailError}
+          isEmailErrorText={isEmailErrorText}
           setPassword={handlePasswordField}
+          isPasswordError={isPasswordError}
+          isPasswordErrorText={isPasswordErrorText}
           setUsername={handleUsernameField}
+          isUsernameError={isUsernameError}
+          isUsernameErrorText={isUsernameErrorText}
           isRegisterError={isRegisterError}
         />
         <RegistrationSuccessPopup

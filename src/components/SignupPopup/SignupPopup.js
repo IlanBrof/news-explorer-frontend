@@ -1,7 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function SignupPopup(props) {
-
   function handleSubmitClick(evt) {
     props.handleRegistration(evt, props.email, props.password, props.username);
   }
@@ -29,7 +28,15 @@ function SignupPopup(props) {
           onChange={props.setEmail}
           required
         ></input>
-        <span className="popup__input-err">Invalid email adress</span>
+        <span
+          className={
+            props.isEmailError
+              ? "popup__input-err popup__input-err_active"
+              : "popup__input-err"
+          }
+        >
+          {props.isEmailErrorText}
+        </span>
       </div>
       <div className="popup__input-alignment">
         <label className="popup__input-label" htmlFor="input-field">
@@ -43,7 +50,15 @@ function SignupPopup(props) {
           onChange={props.setPassword}
           required
         ></input>
-        <span className="popup__input-err">Invalid password</span>
+        <span
+          className={
+            props.isPasswordError
+              ? "popup__input-err popup__input-err_active"
+              : "popup__input-err"
+          }
+        >
+          {props.isPasswordErrorText}
+        </span>
       </div>
       <div className="popup__input-alignment">
         <label className="popup__input-label" htmlFor="input-field">
@@ -57,7 +72,15 @@ function SignupPopup(props) {
           onChange={props.setUsername}
           required
         ></input>
-        <span className="popup__input-err">Invalid User Name</span>
+        <span
+          className={
+            props.isUsernameError
+              ? "popup__input-err popup__input-err_active"
+              : "popup__input-err"
+          }
+        >
+          {props.isUsernameErrorText}
+        </span>
       </div>
     </PopupWithForm>
   );

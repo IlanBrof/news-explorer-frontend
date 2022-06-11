@@ -27,7 +27,15 @@ function LoginPopup(props) {
           onChange={props.setEmail}
           required
         ></input>
-        <span className="popup__input-err">Invalid email adress</span>
+        <span
+          className={
+            props.isEmailError
+              ? "popup__input-err popup__input-err_active"
+              : "popup__input-err"
+          }
+        >
+          {props.isEmailErrorText}
+        </span>
       </div>
       <div className="popup__input-alignment">
         <label className="popup__input-label" htmlFor="input-field">
@@ -41,7 +49,15 @@ function LoginPopup(props) {
           onChange={props.setPassword}
           required
         ></input>
-        <span className="popup__input-err">Invalid Password</span>
+        <span
+          className={
+            props.isPasswordError
+              ? "popup__input-err popup__input-err_active"
+              : "popup__input-err"
+          }
+        >
+          {props.isPasswordErrorText}
+        </span>
       </div>
     </PopupWithForm>
   );

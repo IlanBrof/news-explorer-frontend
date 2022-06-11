@@ -82,10 +82,11 @@ function SavedNews(props) {
           </p>
         </div>
         <ul className="cards-list__container cards-list__container_sn">
-          {props.savedArticles.map((article) => {
+          {props.savedArticles.map((article, index) => {
             return (
               <NewsCard
-                key={"articleId_" + Math.round(Math.random() * 555555)}
+                // key={"articleId_" + Math.round(Math.random() * 555555)}
+                key={index}
                 article={article}
                 isLoggedIn={props.isLoggedIn}
                 isOnSavedNews={props.isOnSavedNews}

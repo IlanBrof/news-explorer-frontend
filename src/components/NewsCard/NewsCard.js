@@ -19,12 +19,16 @@ function NewsCard(props) {
         if (
           item.title === props.article.title &&
           item.link === props.article.url &&
-          item.date === props.article.date &&
-          !isButtonClicked
+          item.date === props.article.date
         ) {
+          setIsArticleSaved(true);
           setIsButtonClicked(true);
         }
       });
+    }
+    if (isOnSavedNews) {
+      MainApi.getSavedArticles();
+      setIsArticleSaved(true);
     }
   }, []);
 
@@ -69,24 +73,40 @@ function NewsCard(props) {
     setIsOverlayVisible(false);
   };
 
-  async function handleButtonClick() {
+  async function handleSaveClick() {
     try {
-      await props.handleSaveArticle(props.article);
-      setIsButtonClicked(false);
+      if (props.isLoggedIn && !isButtonClicked) {
+        await props.handleSaveArticle(props.article);
+        setIsButtonClicked(true);
+        setIsArticleSaved(true);
+      } else {
+        props.setLoginPopupOpen(true);
+      }
     } catch (err) {
       setIsButtonClicked(false);
       console.log(err); //eslint-disable
     }
   }
 
-  const handleDeleteClick = () => {
+  async function handleDeleteClick() {
     props.savedArticles.forEach((article) => {
-      if (article._id === props.article._id) {
-        setIsDelButtonClicked(true);
-        return props.onDeleteBtnClick(props.article._id);
+      if (isOnMain) {
+        if (article.title === props.article.title) {
+          props.onDeleteBtnClick(article._id);
+          setIsArticleSaved(false);
+          setIsButtonClicked(false);
+        }
+      }
+      if (isOnSavedNews) {
+        if (
+          article._id === props.article._id
+        ) {
+          props.onDeleteBtnClick(article._id);
+          // setIsDelButtonClicked(true);
+        }
       }
     });
-  };
+  }
 
   return (
     <li
@@ -122,8 +142,7 @@ function NewsCard(props) {
                 `}
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
-            onClick={isOnSavedNews ? handleDeleteClick : handleButtonClick}
-            // onClick={handleButtonClick}
+            onClick={isArticleSaved ? handleDeleteClick : handleSaveClick}
           ></button>
 
           <div

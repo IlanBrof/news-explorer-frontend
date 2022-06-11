@@ -23,7 +23,9 @@ function NewsCardList(props) {
           .slice(0, articlesToRender)
           .map((article, index) => (
             <NewsCard
-              key={"articleId_" + Math.round(Math.random() * 555555)}
+              // key={"articleId_" + Math.round(Math.random() * 555555)}
+              // key={article.id}
+              key={index}
               article={{
                 image: article.urlToImage,
                 date: article.publishedAt,
@@ -37,6 +39,7 @@ function NewsCardList(props) {
               onDeleteBtnClick={props.onDeleteBtnClick}
               savedArticles={props.savedArticles}
               articles={props.articles}
+              setLoginPopupOpen={props.setLoginPopupOpen}
             />
           ))}
       </ul>

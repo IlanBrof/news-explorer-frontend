@@ -70,6 +70,7 @@ function Main(props) {
         onDeleteBtnClick={props.onDeleteBtnClick}
         articles={props.articles}
         savedArticles={props.savedArticles}
+        setLoginPopupOpen={props.setLoginPopupOpen}
       />
 
       <About />
