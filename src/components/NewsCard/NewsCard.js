@@ -27,7 +27,7 @@ function NewsCard(props) {
       });
     }
     if (isOnSavedNews) {
-      MainApi.getSavedArticles();
+      // MainApi.getSavedArticles();
       setIsArticleSaved(true);
     }
   }, []);
@@ -98,11 +98,8 @@ function NewsCard(props) {
         }
       }
       if (isOnSavedNews) {
-        if (
-          article._id === props.article._id
-        ) {
+        if (article._id === props.article._id) {
           props.onDeleteBtnClick(article._id);
-          // setIsDelButtonClicked(true);
         }
       }
     });
@@ -110,11 +107,7 @@ function NewsCard(props) {
 
   return (
     <li
-      className={
-        isDelButtonClicked
-          ? "cards-list__card cards-list__card_del"
-          : "cards-list__card"
-      }
+      className="cards-list__card"
     >
       <div className="cards-list__card-image-container">
         <div className="cards-list__button-container">

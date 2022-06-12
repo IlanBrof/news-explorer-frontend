@@ -1,18 +1,17 @@
-import aboutImage from "../../images/about.png";
-
 function About() {
   return (
     <div className="about">
-      <img className="about__image" src={aboutImage} alt="about" />
+      <div className="about__image" />
       <div className="about__content">
         <h2 className="about__title">About the author</h2>
+        <p className="about__text">My name is Ilan Brofman and i'm a Full Stack Web Developer.</p>
         <p className="about__text">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          This Project was built as a Final Project for the Practicum100 Web Development Course By Yandex, with the following technologies:
+          ReactJS, NodeJS, Javascript, and CSS.
         </p>
         <p className="about__text">
-          You can also talk about your experience with Practicum, what you
-          learned there, and how you can help potential customers.
+          I'm very excited to start a new path as a web developer! I hope you enjoyed browsing my website 😁
+
         </p>
       </div>
     </div>

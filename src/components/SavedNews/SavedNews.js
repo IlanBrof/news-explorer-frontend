@@ -69,6 +69,7 @@ function SavedNews(props) {
         onHomeButtonClick={props.onHomeButtonClick}
         user={props.user}
       />
+
       <div className="saved-news__content">
         <div className="saved-news__text-content">
           <p className="saved-news__subtitle">Saved articles</p>
@@ -92,6 +93,7 @@ function SavedNews(props) {
                 isOnSavedNews={props.isOnSavedNews}
                 onDeleteBtnClick={props.onDeleteBtnClick}
                 savedArticles={props.savedArticles}
+                setIsLoading={props.setIsLoading}
               />
             );
           })}

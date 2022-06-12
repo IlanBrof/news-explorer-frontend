@@ -163,10 +163,10 @@ function App() {
     setUsername(evt.target.value);
     if (!evt.target.value) {
       setIsUsernameError(true);
-      setIsUsernameErrorText('Username is required.')
+      setIsUsernameErrorText("Username is required.");
     } else if (evt.target.value.length <= 2) {
       setIsUsernameError(true);
-      setIsUsernameErrorText('Username is too short.')
+      setIsUsernameErrorText("Username is too short.");
     } else {
       setIsUsernameError(false);
     }
@@ -206,7 +206,7 @@ function App() {
             id: res._id,
           };
           setIsLoggedIn(true);
-          setCurrentUser(data);
+          // setCurrentUser(data);
         }
       });
       MainApi.getSavedArticles()
@@ -218,6 +218,17 @@ function App() {
         });
     }
   }, []);
+
+  React.useEffect(() => {
+    if (!isLoggedIn) return;
+    MainApi.getUserInfo()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err); //eslint-disable
+      });
+  }, [isLoggedIn]);
 
   function handleRegistration(evt, email, password, name) {
     try {
@@ -252,6 +263,7 @@ function App() {
           setCurrentUser(userData);
           setIsLoggedIn(true);
           setIsLoginPopupOpen(false);
+          window.location.reload();
         }
       })
       .catch((err) => {
@@ -285,17 +297,6 @@ function App() {
       console.log("Error while searching", err); //eslint-disable
     }
   }
-
-  React.useEffect(() => {
-    if (!isLoggedIn) return;
-    MainApi.getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.log(err); //eslint-disable
-      });
-  }, [isLoggedIn]);
 
   async function handleSaveArticle(article) {
     try {
@@ -405,6 +406,7 @@ function App() {
                 isSearchResult={isSearchResult}
                 savedArticles={savedArticles}
                 onDeleteBtnClick={handleDeleteArticle}
+                setIsLoading={setIsLoading}
               />
             }
           />
