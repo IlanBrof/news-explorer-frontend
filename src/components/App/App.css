@@ -1,0 +1,19 @@
+.App {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 0;
+  display: flex;
+  justify-content:center;
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .App {
+    max-width: 490px;
+  }
+}
