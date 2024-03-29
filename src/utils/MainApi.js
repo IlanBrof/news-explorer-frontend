@@ -57,7 +57,7 @@ class Api {
 }
 
 const MainApi = new Api({
-  baseUrl: "https://api.demonewsapp.students.nomoreparties.sbs",
+  baseUrl: "https://api.newsexplorer.brofman.dev",
   // baseUrl: 'http://localhost:3000',
 });
 

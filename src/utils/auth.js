@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.demonewsapp.students.nomoreparties.sbs";
+const BASE_URL = "https://api.newsexplorer.brofman.dev";
 
 function checkResponse(res) {
   if (res.ok) {
